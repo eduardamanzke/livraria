@@ -2,10 +2,15 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 
 @Entity
@@ -17,9 +22,16 @@ public class Editora implements Serializable {
     private Long id;
     private String nome;
     private String logo; 
-    private String img;
+    private String telefone;
+    private String endereco;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date datafund; 
     
+    @OneToMany 
+    (mappedBy="Editora", cascade=CascadeType.ALL)
+    private List<Livro> livro;
 
+    
     public Long getId() {
         return id;
     }
@@ -44,13 +56,40 @@ public class Editora implements Serializable {
         this.logo = logo;
     }
 
-    public String getImg() {
-        return img;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public Date getDatafund() {
+        return datafund;
+    }
+
+    public void setDatafund(Date datafund) {
+        this.datafund = datafund;
+    }
+
+    public List<Livro> getLivro() {
+        return livro;
+    }
+
+    public void setLivro(List<Livro> livro) {
+        this.livro = livro;
+    }
+    
+    
+  
 
  
 }

@@ -3,12 +3,16 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 
@@ -19,6 +23,9 @@ import javax.persistence.Temporal;
 })
 public class Autor implements Serializable {
 
+    @ManyToMany(mappedBy = "autores")
+    private List<Livro> livros;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +35,9 @@ public class Autor implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date datanasc; 
     private String img; 
+    
+  
+    
 
     public Long getId() {
         return id;
@@ -68,6 +78,18 @@ public class Autor implements Serializable {
     public void setImg(String img) {
         this.img = img;
     }
+
+    public List<Livro> getLivros() {
+        return livros;
+    }
+
+    public void setLivros(List<Livro> livros) {
+        this.livros = livros;
+    }
+
+    
+    
+    
     
 }
 
