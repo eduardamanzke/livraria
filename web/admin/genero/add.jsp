@@ -26,15 +26,14 @@
     </div>
 
     <div class="card-footer">
-        <c:if test="${msg != null}>
-            <div class="alert alert-primary alert-dismissible fade show role="alert">
-                ${msg}
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <i class="tim-icons icon-simple-remove"></i>
-                </button>
+        <c:if test="${msg != null}">
+            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    ${msg}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <i class="tim-icons icon-simple-remove"></i>
+                    </button>
             </div>
         </c:if>
     </div>
-</div>
 </div>
 <%@include file="../rodape.jsp" %>

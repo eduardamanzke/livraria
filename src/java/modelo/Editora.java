@@ -9,11 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="Ediota.findAll", query="SELECT d FROM Editora d"),
+    @NamedQuery(name = "Editora.findFilter", query="SELECT d FROM Editora d WHERE d.nome LIKE :filtro")
+})
 public class Editora implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -4,8 +4,6 @@ package controle;
 import dao.GeneroDAO;
 import java.io.IOException;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,6 +20,7 @@ public class GeneroWS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
        String acao = request.getParameter("txtAcao");
        RequestDispatcher destino;
        String pagina;
@@ -30,15 +29,19 @@ public class GeneroWS extends HttpServlet {
        List<Genero> generos;
        Boolean deucerto;
        String msg;
+       
        switch(String.valueOf(acao)){
+           
            case "add":
                pagina = "add.jsp";
                break;
+               
            case "edit":
                obj = dao.buscarPorChavePrimaria(Long.parseLong(request.getParameter("txtId"))); 
                request.setAttribute("obj", obj);
                pagina = "edit.jsp";
                break;
+               
            case "del":
                obj = dao.buscarPorChavePrimaria(Long.parseLong(request.getParameter("txtId"))); 
                deucerto = dao.excluir(obj);
@@ -65,15 +68,17 @@ public class GeneroWS extends HttpServlet {
                          msg = "Problemas no filtro";
                          request.setAttribute("msg", msg);
                }
-                   
+               }
+               
                request.setAttribute("lista", generos);
                pagina = "list.jsp"; 
                break; 
                }
+       
        destino = request.getRequestDispatcher(pagina);
        destino.forward(request, response);
 
-    }
+    
     }
 
   

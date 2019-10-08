@@ -6,9 +6,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name ="Usuario.findAll", query="SELECT d FROM Usuario d"),
+    @NamedQuery(name = "Usuario.findFilter", query="SELECT d FROM Usuario d WHERE d.nome LIKE :filtro")
+})
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;

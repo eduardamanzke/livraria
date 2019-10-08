@@ -19,7 +19,7 @@ import javax.persistence.Temporal;
 @Entity
 @NamedQueries({
     @NamedQuery(name ="Livro.findAll", query="SELECT d FROM Livro d"),
-    @NamedQuery(name = "Livro.findFilter", query="SELECT d FROM Livro d WHERE d.nome LIKE :filtro")
+    @NamedQuery(name = "Livro.findFilter", query="SELECT d FROM Livro d WHERE d.titulo LIKE :filtro")
 })
 public class Livro implements Serializable {
 
